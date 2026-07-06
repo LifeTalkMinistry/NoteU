@@ -14,53 +14,13 @@ abstract final class AppTheme {
           background: AppColors.background,
         ),
         textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            fontSize: 34,
-            fontWeight: FontWeight.w800,
-            height: 1.12,
-            color: AppColors.textPrimary,
-          ),
-          headlineMedium: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w800,
-            height: 1.16,
-            color: AppColors.textPrimary,
-          ),
-          headlineSmall: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-            height: 1.22,
-            color: AppColors.textPrimary,
-          ),
-          titleLarge: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-          ),
-          titleMedium: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 16,
-            height: 1.5,
-            color: AppColors.textPrimary,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 14,
-            height: 1.45,
-            color: AppColors.textSecondary,
-          ),
-        ),
-        cardTheme: CardTheme(
-          elevation: 0,
-          color: AppColors.surface,
-          margin: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-            side: const BorderSide(color: AppColors.border),
-          ),
+          headlineLarge: TextStyle(fontSize: 34, fontWeight: FontWeight.w800, height: 1.12, color: AppColors.textPrimary),
+          headlineMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, height: 1.16, color: AppColors.textPrimary),
+          headlineSmall: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, height: 1.22, color: AppColors.textPrimary),
+          titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+          titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+          bodyLarge: TextStyle(fontSize: 16, height: 1.5, color: AppColors.textPrimary),
+          bodyMedium: TextStyle(fontSize: 14, height: 1.45, color: AppColors.textSecondary),
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
