@@ -13,7 +13,6 @@
       --muted: #64748b;
       --border: #e5e7eb;
       --soft: #eff3ff;
-      --glow: rgba(59, 91, 219, .12);
     }
 
     * { box-sizing: border-box; }
@@ -36,11 +35,7 @@
       overflow: hidden;
     }
 
-    main {
-      min-height: 100vh;
-      padding: 0 24px;
-    }
-
+    main { min-height: 100vh; padding: 0 24px; }
     .screen { display: none; }
     .screen.active { display: block; }
 
@@ -84,12 +79,6 @@
       line-height: 1.5;
     }
 
-    .actions {
-      display: grid;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
     button {
       width: 100%;
       min-height: 58px;
@@ -99,32 +88,11 @@
       cursor: pointer;
     }
 
-    .action-button {
-      display: grid;
-      grid-template-columns: 26px 1fr 26px;
-      align-items: center;
-      padding: 0 18px;
-    }
-
-    .primary {
-      border: 1px solid var(--primary);
-      background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 14px 26px rgba(59, 91, 219, .18);
-    }
-
-    .secondary {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    .arrow {
-      color: var(--primary);
-      font-size: 22px;
-      line-height: 1;
-    }
-
+    .actions { display: grid; gap: 14px; margin-top: 34px; }
+    .action-button { display: grid; grid-template-columns: 26px 1fr 26px; align-items: center; padding: 0 18px; }
+    .primary { border: 1px solid var(--primary); background: var(--primary); color: #ffffff; box-shadow: 0 14px 26px rgba(59, 91, 219, .18); }
+    .secondary { border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+    .arrow { color: var(--primary); font-size: 22px; line-height: 1; }
     .primary .arrow { color: #ffffff; }
 
     .page { padding-top: 34px; }
@@ -152,11 +120,7 @@
       font-weight: 800;
     }
 
-    .note-composer {
-      min-height: calc(100vh - 132px);
-      display: flex;
-      flex-direction: column;
-    }
+    .note-composer { min-height: calc(100vh - 132px); display: flex; flex-direction: column; }
 
     .note-title-input,
     .note-body-input {
@@ -179,13 +143,7 @@
     .note-title-input::placeholder,
     .note-body-input::placeholder { color: #9ca3af; }
 
-    .note-body-input {
-      flex: 1;
-      min-height: 360px;
-      resize: none;
-      font-size: 17px;
-      line-height: 1.6;
-    }
+    .note-body-input { flex: 1; min-height: 360px; resize: none; font-size: 17px; line-height: 1.6; }
 
     .ai-cabinet {
       max-height: 0;
@@ -196,12 +154,7 @@
       margin-top: 0;
     }
 
-    .ai-cabinet.open {
-      max-height: 220px;
-      opacity: 1;
-      transform: translateY(0);
-      margin-top: 16px;
-    }
+    .ai-cabinet.open { max-height: 220px; opacity: 1; transform: translateY(0); margin-top: 16px; }
 
     .ai-cabinet-card {
       padding: 16px;
@@ -212,81 +165,18 @@
       backdrop-filter: blur(12px);
     }
 
-    .ai-cabinet-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
+    .ai-cabinet-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .ai-label { color: var(--text); font-size: 14px; font-weight: 850; }
+    .collapse-ai { width: 34px; min-height: 34px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 16px; line-height: 1; box-shadow: none; }
+    .chip-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { width: auto; min-height: 34px; padding: 0 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text); font-size: 12.5px; font-weight: 750; box-shadow: 0 8px 18px rgba(15, 23, 42, .04); }
 
-    .ai-label {
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 850;
-    }
+    .bottom-actions { display: grid; grid-template-columns: 1fr 112px; gap: 12px; align-items: center; padding: 18px 0 26px; }
+    .ghost-ai { min-height: 48px; border: 1px solid var(--border); background: var(--surface); color: var(--primary); box-shadow: none; }
+    .save-button { min-height: 48px; border-radius: 14px; }
 
-    .collapse-ai {
-      width: 34px;
-      min-height: 34px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1;
-      box-shadow: none;
-    }
-
-    .chip-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      width: auto;
-      min-height: 34px;
-      padding: 0 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--text);
-      font-size: 12.5px;
-      font-weight: 750;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, .04);
-    }
-
-    .bottom-actions {
-      display: grid;
-      grid-template-columns: 1fr 112px;
-      gap: 12px;
-      align-items: center;
-      padding: 18px 0 26px;
-    }
-
-    .ghost-ai {
-      min-height: 48px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--primary);
-      box-shadow: none;
-    }
-
-    .save-button {
-      min-height: 48px;
-      border-radius: 14px;
-    }
-
-    .library-hero {
-      margin-top: 54px;
-      margin-bottom: 34px;
-    }
-
-    .library-hero p {
-      max-width: 295px;
-      font-size: 14.5px;
-    }
+    .library-hero { margin-top: 54px; margin-bottom: 34px; }
+    .library-hero p { max-width: 295px; font-size: 14.5px; }
 
     .library-empty,
     .note-card,
@@ -297,199 +187,45 @@
       box-shadow: 0 18px 44px rgba(15, 23, 42, .07);
     }
 
-    .library-empty {
-      margin-top: 40px;
-      padding: 30px 28px;
-      text-align: center;
-    }
-
-    .library-icon {
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 22px;
-      border-radius: 18px;
-      background: var(--soft);
-      color: var(--primary);
-      font-size: 24px;
-      font-weight: 900;
-    }
-
-    .library-empty h2 {
-      font-size: 25px;
-      line-height: 1.08;
-    }
-
-    .library-empty .primary {
-      margin-top: 24px;
-      min-height: 52px;
-    }
-
-    .notes-list {
-      display: grid;
-      gap: 14px;
-      padding-bottom: 34px;
-    }
+    .library-empty { margin-top: 40px; padding: 30px 28px; text-align: center; }
+    .library-icon { width: 54px; height: 54px; display: grid; place-items: center; margin: 0 auto 22px; border-radius: 18px; background: var(--soft); color: var(--primary); font-size: 24px; font-weight: 900; }
+    .library-empty h2 { font-size: 25px; line-height: 1.08; }
+    .library-empty .primary { margin-top: 24px; min-height: 52px; }
+    .notes-list { display: grid; gap: 14px; padding-bottom: 34px; }
 
     .note-card {
-      padding: 20px;
-    }
-
-    .note-card h2 {
-      font-size: 21px;
-      font-weight: 900;
-      line-height: 1.15;
-    }
-
-    .note-preview {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .note-date {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 12.5px;
-      font-weight: 750;
-    }
-
-    .review-grid {
-      display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .method-card {
       width: 100%;
-      min-height: 86px;
-      display: grid;
-      grid-template-columns: 52px 1fr 24px;
-      align-items: center;
-      gap: 14px;
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
+      padding: 20px;
       text-align: left;
+      appearance: none;
     }
 
-    .icon-box {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: var(--soft);
-      color: var(--primary);
-      font-size: 24px;
-      font-weight: 900;
-    }
+    .note-card:hover,
+    .note-card:focus-visible { border-color: rgba(59, 91, 219, .32); outline: none; }
 
-    .method-card strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 15px;
-      color: var(--text);
-    }
+    .note-card h2 { font-size: 21px; font-weight: 900; line-height: 1.15; }
+    .note-preview { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: 10px; }
+    .note-date { margin-top: 16px; color: var(--muted); font-size: 12.5px; font-weight: 750; }
 
-    .method-card span {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-    }
+    .review-grid { display: grid; gap: 14px; margin-top: 18px; }
+    .method-card { width: 100%; min-height: 86px; display: grid; grid-template-columns: 52px 1fr 24px; align-items: center; gap: 14px; padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); text-align: left; }
+    .icon-box { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: var(--soft); color: var(--primary); font-size: 24px; font-weight: 900; }
+    .method-card strong { display: block; margin-bottom: 4px; font-size: 15px; color: var(--text); }
+    .method-card span { color: var(--muted); font-size: 13px; line-height: 1.35; }
 
-    .identity-page {
-      height: 100vh;
-      padding-top: 28px;
-      overflow: hidden;
-    }
-
+    .identity-page { height: 100vh; padding-top: 28px; overflow: hidden; }
     .identity-page .topbar { margin-bottom: 20px; }
     .identity-hero { margin-bottom: 20px; }
-
-    .identity-hero h1 {
-      font-size: 32px;
-      letter-spacing: -1px;
-    }
-
-    .identity-hero p {
-      max-width: 295px;
-      font-size: 14.5px;
-    }
-
-    .identity-carousel {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 88%;
-      gap: 14px;
-      margin: 0 -24px;
-      padding: 2px 24px 24px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
+    .identity-hero h1 { font-size: 32px; letter-spacing: -1px; }
+    .identity-hero p { max-width: 295px; font-size: 14.5px; }
+    .identity-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: 88%; gap: 14px; margin: 0 -24px; padding: 2px 24px 24px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .identity-carousel::-webkit-scrollbar { display: none; }
-
-    .identity-card {
-      min-height: min(470px, calc(100vh - 210px));
-      scroll-snap-align: start;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      padding: 24px;
-      background:
-        radial-gradient(circle at 18% 0%, rgba(59, 91, 219, .13), transparent 36%),
-        linear-gradient(145deg, #ffffff 0%, #f8f9ff 58%, #f8f4ee 100%);
-    }
-
-    .card-label {
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 850;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-
-    .identity-name {
-      margin-top: 16px;
-      font-size: 29px;
-      font-weight: 920;
-      line-height: 1.03;
-      letter-spacing: -.95px;
-      color: var(--text);
-    }
-
-    .identity-copy {
-      margin-top: 16px;
-      color: #475569;
-      font-size: 14.5px;
-      line-height: 1.56;
-    }
-
-    .identity-note {
-      margin-top: auto;
-      padding-top: 14px;
-      border-top: 1px solid rgba(226, 232, 240, .85);
-      color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.45;
-    }
-
-    .identity-hint {
-      margin-top: 14px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 12px;
-    }
+    .identity-card { min-height: min(470px, calc(100vh - 210px)); scroll-snap-align: start; position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 24px; background: radial-gradient(circle at 18% 0%, rgba(59, 91, 219, .13), transparent 36%), linear-gradient(145deg, #ffffff 0%, #f8f9ff 58%, #f8f4ee 100%); }
+    .card-label { color: var(--primary); font-size: 12px; font-weight: 850; letter-spacing: .02em; text-transform: uppercase; }
+    .identity-name { margin-top: 16px; font-size: 29px; font-weight: 920; line-height: 1.03; letter-spacing: -.95px; color: var(--text); }
+    .identity-copy { margin-top: 16px; color: #475569; font-size: 14.5px; line-height: 1.56; }
+    .identity-note { margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(226, 232, 240, .85); color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+    .identity-hint { margin-top: 14px; text-align: center; color: #94a3b8; font-size: 12px; }
   </style>
 </head>
 <body>
@@ -500,26 +236,18 @@
           <div class="eyebrow">Welcome back</div>
           <h1>What are you<br>learning today?</h1>
           <div class="actions">
-            <button class="primary action-button" onclick="showScreen('newnote')">
-              <span></span><span>New Note</span><span class="arrow">→</span>
-            </button>
-            <button class="secondary action-button" onclick="showScreen('mynotes')">
-              <span></span><span>My Notes</span><span class="arrow">→</span>
-            </button>
-            <button class="secondary action-button" onclick="showScreen('review')">
-              <span></span><span>Continue Review</span><span class="arrow">→</span>
-            </button>
-            <button class="secondary action-button" onclick="showScreen('identity')">
-              <span></span><span>Learning Identity</span><span class="arrow">→</span>
-            </button>
+            <button class="primary action-button" onclick="startNewNote()"><span></span><span>New Note</span><span class="arrow">→</span></button>
+            <button class="secondary action-button" onclick="showScreen('mynotes')"><span></span><span>My Notes</span><span class="arrow">→</span></button>
+            <button class="secondary action-button" onclick="showScreen('review')"><span></span><span>Continue Review</span><span class="arrow">→</span></button>
+            <button class="secondary action-button" onclick="showScreen('identity')"><span></span><span>Learning Identity</span><span class="arrow">→</span></button>
           </div>
         </div>
       </section>
 
       <section id="newnote" class="screen page">
         <div class="topbar">
-          <button class="back" onclick="showScreen('home')">‹</button>
-          <div class="title">New Note</div>
+          <button class="back" onclick="handleNoteBack()">‹</button>
+          <div id="newNoteTitle" class="title">New Note</div>
           <div></div>
         </div>
 
@@ -567,11 +295,7 @@
       </section>
 
       <section id="review" class="screen page">
-        <div class="topbar">
-          <button class="back" onclick="showScreen('home')">‹</button>
-          <div class="title">Choose Review Method</div>
-          <div></div>
-        </div>
+        <div class="topbar"><button class="back" onclick="showScreen('home')">‹</button><div class="title">Choose Review Method</div><div></div></div>
         <h2>How do you want to review?</h2>
         <div class="review-grid">
           <button class="method-card"><span class="icon-box">?</span><span><strong>Quick Quiz</strong><span>Test your knowledge with quick multiple choice questions.</span></span><span class="arrow">→</span></button>
@@ -582,38 +306,14 @@
       </section>
 
       <section id="identity" class="screen page identity-page">
-        <div class="topbar">
-          <button class="back" onclick="showScreen('home')">‹</button>
-          <div class="title">Learning Identity</div>
-          <div></div>
-        </div>
-
-        <div class="identity-hero">
-          <h1>Learning Identity</h1>
-          <p>Your learning habits reveal what you're becoming.</p>
-        </div>
-
+        <div class="topbar"><button class="back" onclick="showScreen('home')">‹</button><div class="title">Learning Identity</div><div></div></div>
+        <div class="identity-hero"><h1>Learning Identity</h1><p>Your learning habits reveal what you're becoming.</p></div>
         <div class="identity-carousel" aria-label="Learning Identity reflections">
-          <section class="identity-card">
-            <div class="card-label">Current Learning Reflection</div>
-            <div class="identity-name">Developing Intentional Learner</div>
-            <div class="identity-copy">Your Learning Identity becomes clearer as you capture and review meaningful notes.</div>
-            <div class="identity-note">This is not a personality test. This reflection comes from your actual learning behavior.</div>
-          </section>
-          <section class="identity-card">
-            <div class="card-label">Learning Distribution</div>
-            <div class="identity-copy">Your strongest topics will appear here as your notes grow.</div>
-          </section>
-          <section class="identity-card">
-            <div class="card-label">Recent Growth</div>
-            <div class="identity-copy">Keep writing lessons worth remembering. Growth patterns need real learning signals.</div>
-          </section>
-          <section class="identity-card">
-            <div class="card-label">Future Potential</div>
-            <div class="identity-copy">Your future learning reflection will come from the knowledge you consistently keep.</div>
-          </section>
+          <section class="identity-card"><div class="card-label">Current Learning Reflection</div><div class="identity-name">Developing Intentional Learner</div><div class="identity-copy">Your Learning Identity becomes clearer as you capture and review meaningful notes.</div><div class="identity-note">This is not a personality test. This reflection comes from your actual learning behavior.</div></section>
+          <section class="identity-card"><div class="card-label">Learning Distribution</div><div class="identity-copy">Your strongest topics will appear here as your notes grow.</div></section>
+          <section class="identity-card"><div class="card-label">Recent Growth</div><div class="identity-copy">Keep writing lessons worth remembering. Growth patterns need real learning signals.</div></section>
+          <section class="identity-card"><div class="card-label">Future Potential</div><div class="identity-copy">Your future learning reflection will come from the knowledge you consistently keep.</div></section>
         </div>
-
         <div class="identity-hint">Swipe to see more reflections</div>
       </section>
     </main>
@@ -621,6 +321,7 @@
 
   <script>
     const NOTES_KEY = 'noteu_saved_notes';
+    let editingNoteId = null;
 
     function getNotes() {
       try {
@@ -634,6 +335,37 @@
       localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
     }
 
+    function startNewNote() {
+      clearEditMode();
+      showScreen('newnote');
+    }
+
+    function editNote(id) {
+      const note = getNotes().find((item) => item.id === id);
+      if (!note) return;
+
+      editingNoteId = id;
+      document.getElementById('noteTitle').value = note.title || '';
+      document.getElementById('noteBody').value = note.body || '';
+      document.getElementById('newNoteTitle').textContent = 'Edit Note';
+      toggleAiTools(false);
+      showScreen('newnote', { preserveEditMode: true });
+    }
+
+    function clearEditMode() {
+      editingNoteId = null;
+      document.getElementById('noteTitle').value = '';
+      document.getElementById('noteBody').value = '';
+      document.getElementById('newNoteTitle').textContent = 'New Note';
+      toggleAiTools(false);
+    }
+
+    function handleNoteBack() {
+      const destination = editingNoteId ? 'mynotes' : 'home';
+      clearEditMode();
+      showScreen(destination);
+    }
+
     function saveNote() {
       const titleInput = document.getElementById('noteTitle');
       const bodyInput = document.getElementById('noteBody');
@@ -643,27 +375,36 @@
       if (!title && !body) return;
 
       const now = new Date().toISOString();
-      const note = {
-        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-        title: title || 'Untitled Note',
-        body,
-        createdAt: now,
-        updatedAt: now
-      };
-
       const notes = getNotes();
-      notes.unshift(note);
-      setNotes(notes);
 
-      titleInput.value = '';
-      bodyInput.value = '';
-      toggleAiTools(false);
+      if (editingNoteId) {
+        const noteIndex = notes.findIndex((note) => note.id === editingNoteId);
+        if (noteIndex !== -1) {
+          notes[noteIndex] = {
+            ...notes[noteIndex],
+            title: title || 'Untitled Note',
+            body,
+            updatedAt: now
+          };
+        }
+      } else {
+        notes.unshift({
+          id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+          title: title || 'Untitled Note',
+          body,
+          createdAt: now,
+          updatedAt: now
+        });
+      }
+
+      setNotes(notes);
+      clearEditMode();
       showScreen('mynotes');
     }
 
     function renderMyNotes() {
       const container = document.getElementById('myNotesContent');
-      const notes = getNotes();
+      const notes = getNotes().sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
 
       if (!notes.length) {
         container.innerHTML = `
@@ -671,7 +412,7 @@
             <div class="library-icon">▤</div>
             <h2>No notes yet.</h2>
             <p>Start by capturing one lesson worth remembering.</p>
-            <button class="primary" onclick="showScreen('newnote')">New Note</button>
+            <button class="primary" onclick="startNewNote()">New Note</button>
           </section>
         `;
         return;
@@ -680,11 +421,11 @@
       container.innerHTML = `
         <div class="notes-list">
           ${notes.map((note) => `
-            <article class="note-card">
+            <button class="note-card" onclick="editNote('${escapeAttribute(note.id)}')">
               <h2>${escapeHtml(note.title)}</h2>
               ${note.body ? `<p class="note-preview">${escapeHtml(note.body)}</p>` : ''}
-              <div class="note-date">${formatDate(note.createdAt)}</div>
-            </article>
+              <div class="note-date">${formatDate(note.updatedAt || note.createdAt)}</div>
+            </button>
           `).join('')}
         </div>
       `;
@@ -699,13 +440,18 @@
         .replaceAll("'", '&#039;');
     }
 
+    function escapeAttribute(value) {
+      return String(value).replaceAll('\\', '\\\\').replaceAll("'", "\\'");
+    }
+
     function formatDate(value) {
       const date = new Date(value);
       if (Number.isNaN(date.getTime())) return '';
       return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
     }
 
-    function showScreen(id) {
+    function showScreen(id, options = {}) {
+      if (id === 'newnote' && !options.preserveEditMode) clearEditMode();
       document.querySelectorAll('.screen').forEach((screen) => screen.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       location.hash = id;
@@ -715,8 +461,8 @@
     function toggleAiTools(forceOpen) {
       const cabinet = document.getElementById('aiCabinet');
       const button = document.getElementById('aiToolsButton');
+      if (!cabinet || !button) return;
       const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !cabinet.classList.contains('open');
-
       cabinet.classList.toggle('open', shouldOpen);
       cabinet.setAttribute('aria-hidden', String(!shouldOpen));
       button.setAttribute('aria-expanded', String(shouldOpen));
