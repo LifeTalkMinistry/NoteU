@@ -348,12 +348,9 @@
     }
 
     .identity-carousel {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 88%;
+      display: flex;
       gap: 14px;
-      margin: 0 -24px;
-      padding: 2px 24px 24px;
+      padding: 2px 0 18px;
       overflow-x: auto;
       overflow-y: hidden;
       overscroll-behavior-x: contain;
@@ -366,7 +363,6 @@
 
     .identity-card,
     .empty-card {
-      min-height: min(470px, calc(100vh - 210px));
       scroll-snap-align: start;
       border: 1px solid rgba(226, 232, 240, .9);
       background: rgba(255, 255, 255, .88);
@@ -379,7 +375,9 @@
       position: relative;
       overflow: hidden;
       display: flex;
+      flex: 0 0 86%;
       flex-direction: column;
+      height: 430px;
       padding: 24px;
       background:
         radial-gradient(circle at 18% 0%, rgba(59, 91, 219, .13), transparent 36%),
@@ -429,7 +427,7 @@
     .identity-note {
       position: relative;
       z-index: 1;
-      margin-top: auto;
+      margin-top: 18px;
       padding-top: 14px;
       border-top: 1px solid rgba(226, 232, 240, .85);
       color: var(--muted);
