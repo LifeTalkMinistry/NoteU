@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.22),
+                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.18),
                   Text(
                     'Welcome back',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -48,9 +48,21 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   _HomeActionButton(
+                    label: 'My Notes',
+                    filled: false,
+                    onPressed: () => context.push(AppRoutes.myNotes),
+                  ),
+                  const SizedBox(height: 12),
+                  _HomeActionButton(
                     label: 'Continue Review',
                     filled: false,
                     onPressed: () => context.push(AppRoutes.review),
+                  ),
+                  const SizedBox(height: 12),
+                  _HomeActionButton(
+                    label: 'Learning Identity',
+                    filled: false,
+                    onPressed: () => context.push(AppRoutes.identity),
                   ),
                 ],
               ),
