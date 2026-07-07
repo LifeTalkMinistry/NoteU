@@ -30,7 +30,7 @@ class MyNotesScreen extends StatelessWidget {
                       .whereType<Map<dynamic, dynamic>>()
                       .map(LocalNote.fromMap)
                       .toList()
-                    ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+                    ..sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
 
                   return CustomScrollView(
                     slivers: [
@@ -210,55 +210,62 @@ class _NoteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final preview = note.body.trim().replaceAll('\n', ' ');
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => context.push('${AppRoutes.newNote}?id=${Uri.encodeComponent(note.id)}'),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.border),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.textPrimary.withOpacity(.045),
-            blurRadius: 28,
-            offset: const Offset(0, 14),
+        child: Ink(
+          width: double.infinity,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: AppColors.surface,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: AppColors.border),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.textPrimary.withOpacity(.045),
+                blurRadius: 28,
+                offset: const Offset(0, 14),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            note.title,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: AppColors.textPrimary,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -.4,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                note.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: AppColors.textPrimary,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: -.4,
+                    ),
+              ),
+              if (preview.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                Text(
+                  preview,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppColors.textSecondary,
+                        height: 1.45,
+                      ),
                 ),
+              ],
+              const SizedBox(height: 16),
+              Text(
+                _formatDate(note.updatedAt),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: AppColors.textSecondary,
+                      fontWeight: FontWeight.w700,
+                    ),
+              ),
+            ],
           ),
-          if (preview.isNotEmpty) ...[
-            const SizedBox(height: 10),
-            Text(
-              preview,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textSecondary,
-                    height: 1.45,
-                  ),
-            ),
-          ],
-          const SizedBox(height: 16),
-          Text(
-            _formatDate(note.createdAt),
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.textSecondary,
-                  fontWeight: FontWeight.w700,
-                ),
-          ),
-        ],
+        ),
       ),
     );
   }
