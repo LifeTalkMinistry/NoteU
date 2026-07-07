@@ -41,10 +41,12 @@ class MyNotesScreen extends StatelessWidget {
                           child: _EmptyNotesState(),
                         )
                       else
-                        SliverList.separated(
+                        SliverList.builder(
                           itemCount: notes.length,
-                          separatorBuilder: (_, __) => const SizedBox(height: 14),
-                          itemBuilder: (context, index) => _NoteCard(note: notes[index]),
+                          itemBuilder: (context, index) => Padding(
+                            padding: EdgeInsets.only(bottom: index == notes.length - 1 ? 0 : 14),
+                            child: _NoteCard(note: notes[index]),
+                          ),
                         ),
                       const SliverToBoxAdapter(child: SizedBox(height: 34)),
                     ],
