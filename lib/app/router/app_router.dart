@@ -16,7 +16,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(path: AppRoutes.splash, builder: (context, state) => const LaunchScreen()),
       GoRoute(path: AppRoutes.home, builder: (context, state) => const HomeScreen()),
-      GoRoute(path: AppRoutes.newNote, builder: (context, state) => const NewNoteScreen()),
+      GoRoute(
+        path: AppRoutes.newNote,
+        builder: (context, state) => NewNoteScreen(
+          noteId: state.uri.queryParameters['id'],
+        ),
+      ),
       GoRoute(path: AppRoutes.myNotes, builder: (context, state) => const MyNotesScreen()),
       GoRoute(path: AppRoutes.review, builder: (context, state) => const ReviewScreen()),
       GoRoute(path: AppRoutes.identity, builder: (context, state) => const LearningIdentityScreen()),
