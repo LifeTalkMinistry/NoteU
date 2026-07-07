@@ -13,6 +13,8 @@
       --muted: #64748b;
       --border: #e5e7eb;
       --soft: #eff3ff;
+      --warm: #f8f4ee;
+      --glow: rgba(59, 91, 219, .12);
     }
 
     * { box-sizing: border-box; }
@@ -42,7 +44,14 @@
     .screen { display: none; }
     .screen.active { display: block; }
 
-    #home { padding-top: 31vh; }
+    #home {
+      min-height: 100vh;
+      display: none;
+      align-content: center;
+      padding: 0;
+    }
+
+    #home.active { display: grid; }
 
     .eyebrow {
       margin-bottom: 6px;
@@ -77,8 +86,8 @@
 
     .actions {
       display: grid;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 14px;
+      margin-top: 34px;
     }
 
     button {
@@ -313,21 +322,234 @@
       font-size: 13px;
       line-height: 1.35;
     }
+
+    .identity-page {
+      padding-bottom: 42px;
+    }
+
+    .identity-hero {
+      margin-bottom: 24px;
+    }
+
+    .identity-hero h1 {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+
+    .identity-hero p {
+      max-width: 295px;
+      font-size: 14.5px;
+    }
+
+    .identity-card,
+    .identity-section,
+    .empty-card {
+      border: 1px solid rgba(226, 232, 240, .9);
+      background: rgba(255, 255, 255, .88);
+      border-radius: 26px;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, .07);
+      backdrop-filter: blur(14px);
+    }
+
+    .identity-card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      margin-bottom: 18px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(59, 91, 219, .13), transparent 36%),
+        linear-gradient(145deg, #ffffff 0%, #f8f9ff 58%, #f8f4ee 100%);
+    }
+
+    .identity-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -36px -48px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: var(--glow);
+    }
+
+    .card-label,
+    .section-label {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .identity-name {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+      font-size: 25px;
+      font-weight: 920;
+      line-height: 1.06;
+      letter-spacing: -.8px;
+      color: var(--text);
+    }
+
+    .identity-copy {
+      position: relative;
+      z-index: 1;
+      margin-top: 12px;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.56;
+    }
+
+    .identity-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(226, 232, 240, .85);
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .identity-section {
+      padding: 20px;
+      margin-top: 14px;
+    }
+
+    .distribution-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .distribution-row {
+      display: grid;
+      gap: 7px;
+    }
+
+    .distribution-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--text);
+      font-size: 13.5px;
+      font-weight: 760;
+    }
+
+    .distribution-meta span:last-child {
+      color: var(--muted);
+      font-weight: 820;
+    }
+
+    .bar-track {
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #edf1f7;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #3b5bdb, #8b5cf6);
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .reflection-copy {
+      margin-top: 12px;
+      color: #475569;
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .trend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .trend-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fbfcff;
+    }
+
+    .trend-title {
+      margin-bottom: 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .trend-item {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .potential-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .gentle-reminder {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .empty-card {
+      display: none;
+      padding: 26px;
+      text-align: center;
+    }
+
+    .empty-card h2 {
+      font-size: 24px;
+      line-height: 1.08;
+    }
+
+    .empty-card .primary {
+      margin-top: 22px;
+      min-height: 52px;
+    }
   </style>
 </head>
 <body>
   <div class="app">
     <main>
       <section id="home" class="screen active">
-        <div class="eyebrow">Welcome back</div>
-        <h1>What are you<br>learning today?</h1>
-        <div class="actions">
-          <button class="primary action-button" onclick="showScreen('newnote')">
-            <span></span><span>New Note</span><span class="arrow">→</span>
-          </button>
-          <button class="secondary action-button" onclick="showScreen('review')">
-            <span></span><span>Continue Review</span><span class="arrow">→</span>
-          </button>
+        <div>
+          <div class="eyebrow">Welcome back</div>
+          <h1>What are you<br>learning today?</h1>
+          <div class="actions">
+            <button class="primary action-button" onclick="showScreen('newnote')">
+              <span></span><span>New Note</span><span class="arrow">→</span>
+            </button>
+            <button class="secondary action-button" onclick="showScreen('review')">
+              <span></span><span>Continue Review</span><span class="arrow">→</span>
+            </button>
+            <button class="secondary action-button" onclick="showScreen('identity')">
+              <span></span><span>Learning Identity</span><span class="arrow">→</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -382,14 +604,93 @@
           <button class="method-card"><span class="icon-box">◎</span><span><strong>Apply It</strong><span>Apply your learning to real-world situations.</span></span><span class="arrow">→</span></button>
         </div>
       </section>
+
+      <section id="identity" class="screen page identity-page">
+        <div class="topbar">
+          <button class="back" onclick="showScreen('home')">‹</button>
+          <div class="title">Learning Identity</div>
+          <div></div>
+        </div>
+
+        <div id="identityContent">
+          <div class="identity-hero">
+            <h1>Learning Identity</h1>
+            <p>Your learning habits reveal what you're becoming.</p>
+          </div>
+
+          <section class="identity-card">
+            <div class="card-label">Current Learning Reflection</div>
+            <div id="identityName" class="identity-name">Developing Systems Thinker</div>
+            <div id="identitySummary" class="identity-copy"></div>
+            <div class="identity-note">This is not a personality test. This reflection is generated from your actual learning behavior and should be read as a gentle mirror, not an absolute truth.</div>
+          </section>
+
+          <section class="identity-section">
+            <div class="section-label">Learning Distribution</div>
+            <div id="distributionList" class="distribution-list"></div>
+            <div class="total-row"><span>Total</span><span id="distributionTotal">100%</span></div>
+          </section>
+
+          <section class="identity-section">
+            <div class="section-label">Recent Growth</div>
+            <div id="growthInsight" class="reflection-copy"></div>
+          </section>
+
+          <section class="identity-section">
+            <div class="section-label">Weekly Trend</div>
+            <div class="trend-grid">
+              <div class="trend-card">
+                <div class="trend-title">Growing</div>
+                <div id="growingTopics"></div>
+              </div>
+              <div class="trend-card">
+                <div class="trend-title">Declining</div>
+                <div id="decliningTopics"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="identity-section">
+            <div class="section-label">Future Potential</div>
+            <p>Based on your sustained learning patterns, you appear to be building strong foundations in:</p>
+            <ul id="potentialList" class="potential-list"></ul>
+            <div class="gentle-reminder">These are learning patterns, not fixed identities. NoteU reflects what you intentionally preserve, strengthen, and allow to shape who you are becoming.</div>
+          </section>
+        </div>
+
+        <section id="identityEmpty" class="empty-card">
+          <h2>Your learning story is just beginning.</h2>
+          <p>The more meaningful lessons you capture, review, and apply, the clearer your Learning Identity becomes.</p>
+          <button class="primary" onclick="showScreen('newnote')">Create Your First Note</button>
+        </section>
+      </section>
     </main>
   </div>
 
   <script>
+    const learningIdentityEvents = [
+      { topic: 'Financial Behavior', notes: 9, reviews: 16, quizzes: 6, flashcards: 8, recall: 86, applications: 4, daysAgo: 2, repeats: 7, monthlyChange: 3 },
+      { topic: 'Faith & Theology', notes: 7, reviews: 11, quizzes: 3, flashcards: 5, recall: 82, applications: 3, daysAgo: 4, repeats: 5, monthlyChange: 2 },
+      { topic: 'Leadership', notes: 5, reviews: 9, quizzes: 3, flashcards: 4, recall: 78, applications: 3, daysAgo: 1, repeats: 4, monthlyChange: 7 },
+      { topic: 'Content Creation', notes: 4, reviews: 7, quizzes: 2, flashcards: 3, recall: 74, applications: 2, daysAgo: 8, repeats: 3, monthlyChange: 4 },
+      { topic: 'Health & Wellness', notes: 2, reviews: 3, quizzes: 1, flashcards: 1, recall: 70, applications: 1, daysAgo: 14, repeats: 1, monthlyChange: -1 },
+      { topic: 'Other Topics', notes: 1, reviews: 2, quizzes: 0, flashcards: 1, recall: 65, applications: 0, daysAgo: 21, repeats: 0, monthlyChange: -3 }
+    ];
+
+    const topicStrengths = {
+      'Financial Behavior': 'Financial decision-making',
+      'Faith & Theology': 'Reflective faith and values',
+      'Leadership': 'Leadership',
+      'Content Creation': 'Communication',
+      'Health & Wellness': 'Personal stewardship',
+      'Other Topics': 'Curiosity across topics'
+    };
+
     function showScreen(id) {
       document.querySelectorAll('.screen').forEach((screen) => screen.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       location.hash = id;
+      if (id === 'identity') renderLearningIdentity();
     }
 
     function toggleAiTools(forceOpen) {
@@ -403,8 +704,111 @@
       button.textContent = shouldOpen ? '✨ AI Tools ↓' : '✨ AI Tools ↑';
     }
 
+    function calculateLearningIdentity(events) {
+      const activeEvents = events.filter((item) => item.notes + item.reviews + item.quizzes + item.flashcards > 0);
+      const enoughSignal = activeEvents.reduce((sum, item) => sum + item.notes, 0) >= 3;
+
+      if (!enoughSignal) return null;
+
+      const scored = activeEvents.map((item) => {
+        const recencyDecay = Math.max(.25, 1 - (item.daysAgo / 120));
+        const behaviorScore =
+          (item.notes * 3) +
+          (item.reviews * 1.8) +
+          (item.quizzes * 1.4) +
+          (item.flashcards * 1.2) +
+          (item.recall / 10) +
+          (item.applications * 2.2) +
+          (item.repeats * 1.6);
+
+        return { ...item, score: behaviorScore * recencyDecay };
+      });
+
+      const totalScore = scored.reduce((sum, item) => sum + item.score, 0);
+      const raw = scored.map((item) => ({ ...item, exactPercent: (item.score / totalScore) * 100 }));
+      const rounded = raw.map((item) => ({ ...item, percent: Math.floor(item.exactPercent) }));
+      let remainder = 100 - rounded.reduce((sum, item) => sum + item.percent, 0);
+
+      rounded
+        .map((item, index) => ({ index, fraction: item.exactPercent - item.percent }))
+        .sort((a, b) => b.fraction - a.fraction)
+        .forEach((item) => {
+          if (remainder > 0) {
+            rounded[item.index].percent += 1;
+            remainder -= 1;
+          }
+        });
+
+      const distribution = rounded.sort((a, b) => b.percent - a.percent);
+      const topTopics = distribution.slice(0, 3).map((item) => item.topic);
+      const growthLeader = [...distribution].sort((a, b) => b.monthlyChange - a.monthlyChange)[0];
+      const steadyLeader = distribution[0];
+      const growing = distribution.filter((item) => item.monthlyChange > 0).slice(0, 3);
+      const declining = distribution.filter((item) => item.monthlyChange < 0).slice(0, 3);
+
+      return {
+        identityName: chooseIdentityName(topTopics),
+        summary: `Based on your recent learning, your current learning patterns indicate that you are becoming more intentional in ${formatTopicList(topTopics)}. Your learning suggests a growing habit of protecting knowledge that matters to your direction.`,
+        distribution,
+        growthInsight: growthLeader.monthlyChange >= 5
+          ? `Your learning has shifted significantly toward ${growthLeader.topic.toLowerCase()} during the past month.`
+          : `Your ${steadyLeader.topic.toLowerCase()} learning has remained consistently strong over your recent activity.`,
+        growing,
+        declining,
+        potentials: [...new Set(topTopics.map((topic) => topicStrengths[topic] || topic))].slice(0, 4)
+      };
+    }
+
+    function chooseIdentityName(topTopics) {
+      if (topTopics.includes('Financial Behavior') && topTopics.includes('Leadership')) return 'Developing Systems Thinker';
+      if (topTopics.includes('Faith & Theology') && topTopics.includes('Leadership')) return 'Developing Reflective Leader';
+      if (topTopics.includes('Content Creation')) return 'Developing Communication Builder';
+      return 'Developing Intentional Learner';
+    }
+
+    function formatTopicList(topics) {
+      if (topics.length <= 1) return topics[0] || 'your strongest topics';
+      return `${topics.slice(0, -1).join(', ')}, and ${topics[topics.length - 1]}`;
+    }
+
+    function renderLearningIdentity() {
+      const identity = calculateLearningIdentity(learningIdentityEvents);
+      const content = document.getElementById('identityContent');
+      const empty = document.getElementById('identityEmpty');
+
+      if (!identity) {
+        content.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      content.style.display = 'block';
+      empty.style.display = 'none';
+
+      document.getElementById('identityName').textContent = identity.identityName;
+      document.getElementById('identitySummary').textContent = identity.summary;
+      document.getElementById('growthInsight').textContent = identity.growthInsight;
+      document.getElementById('distributionTotal').textContent = `${identity.distribution.reduce((sum, item) => sum + item.percent, 0)}%`;
+
+      document.getElementById('distributionList').innerHTML = identity.distribution.map((item) => `
+        <div class="distribution-row">
+          <div class="distribution-meta"><span>${item.topic}</span><span>${item.percent}%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: ${item.percent}%"></div></div>
+        </div>
+      `).join('');
+
+      document.getElementById('growingTopics').innerHTML = renderTrendItems(identity.growing);
+      document.getElementById('decliningTopics').innerHTML = renderTrendItems(identity.declining);
+      document.getElementById('potentialList').innerHTML = identity.potentials.map((item) => `<li>${item}</li>`).join('');
+    }
+
+    function renderTrendItems(items) {
+      if (!items.length) return '<div class="trend-item">No strong shift yet</div>';
+      return items.map((item) => `<div class="trend-item">${item.topic}</div>`).join('');
+    }
+
     const first = location.hash.replace('#', '');
-    if (['home', 'newnote', 'review'].includes(first)) showScreen(first);
+    if (['home', 'newnote', 'review', 'identity'].includes(first)) showScreen(first);
   </script>
 </body>
 </html>
