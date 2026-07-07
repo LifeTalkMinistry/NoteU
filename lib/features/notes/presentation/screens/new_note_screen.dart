@@ -64,7 +64,11 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
 
     if (learnedStart != -1) {
       final start = learnedStart + learnedMarker.length;
-      final end = mattersStart != -1 ? mattersStart : applyStart != -1 ? applyStart : body.length;
+      final end = mattersStart != -1
+          ? mattersStart
+          : applyStart != -1
+              ? applyStart
+              : body.length;
       _lessonController.text = body.substring(start, end).trim();
     }
 
