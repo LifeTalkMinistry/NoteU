@@ -42,9 +42,7 @@
     .screen { display: none; }
     .screen.active { display: block; }
 
-    #home {
-      padding-top: 31vh;
-    }
+    #home { padding-top: 31vh; }
 
     .eyebrow {
       margin-bottom: 6px;
@@ -120,15 +118,13 @@
 
     .primary .arrow { color: #ffffff; }
 
-    .page {
-      padding-top: 34px;
-    }
+    .page { padding-top: 34px; }
 
     .topbar {
       display: grid;
       grid-template-columns: 36px 1fr 36px;
       align-items: center;
-      margin-bottom: 34px;
+      margin-bottom: 28px;
     }
 
     .back {
@@ -147,32 +143,93 @@
       font-weight: 800;
     }
 
-    .field {
-      margin-top: 20px;
+    .note-composer {
+      min-height: calc(100vh - 132px);
+      display: flex;
+      flex-direction: column;
     }
 
-    .field strong {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 16px;
-    }
-
-    textarea {
+    .note-title-input,
+    .note-body-input {
       width: 100%;
-      min-height: 92px;
-      resize: vertical;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      background: #ffffff;
+      border: 0;
+      outline: none;
+      background: transparent;
       color: var(--text);
       font: inherit;
-      outline: none;
     }
 
-    textarea::placeholder { color: #9ca3af; }
+    .note-title-input {
+      margin-bottom: 18px;
+      font-size: 28px;
+      font-weight: 850;
+      line-height: 1.12;
+      letter-spacing: -.7px;
+    }
 
-    .save { margin-top: 44px; }
+    .note-title-input::placeholder,
+    .note-body-input::placeholder { color: #9ca3af; }
+
+    .note-body-input {
+      flex: 1;
+      min-height: 300px;
+      resize: none;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .ai-panel {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .ai-label {
+      margin-bottom: 12px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      width: auto;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 750;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .04);
+    }
+
+    .bottom-actions {
+      display: grid;
+      grid-template-columns: 1fr 112px;
+      gap: 12px;
+      align-items: center;
+      padding: 22px 0 26px;
+    }
+
+    .ghost-ai {
+      min-height: 48px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: none;
+    }
+
+    .save-button {
+      min-height: 48px;
+      border-radius: 14px;
+    }
 
     .review-grid {
       display: grid;
@@ -242,19 +299,30 @@
           <div class="title">New Note</div>
           <div></div>
         </div>
-        <div class="field">
-          <strong>What did I learn?</strong>
-          <textarea placeholder="Write your learning here..."></textarea>
+
+        <div class="note-composer">
+          <input class="note-title-input" placeholder="Title" />
+          <textarea class="note-body-input" placeholder="Start writing..."></textarea>
+
+          <div class="ai-panel">
+            <div class="ai-label">✨ Enhance with AI</div>
+            <div class="chip-grid">
+              <button class="chip">Fix Grammar</button>
+              <button class="chip">Improve</button>
+              <button class="chip">Inspirational</button>
+              <button class="chip">Shorter</button>
+              <button class="chip">Clearer</button>
+              <button class="chip">Caption</button>
+              <button class="chip">Quiz</button>
+              <button class="chip">Flashcards</button>
+            </div>
+          </div>
+
+          <div class="bottom-actions">
+            <button class="ghost-ai">✨ AI Tools</button>
+            <button class="primary save-button">Save</button>
+          </div>
         </div>
-        <div class="field">
-          <strong>Why does this matter?</strong>
-          <textarea placeholder="Explain why this is important..."></textarea>
-        </div>
-        <div class="field">
-          <strong>Where can I apply this?</strong>
-          <textarea placeholder="Describe where you can apply this learning..."></textarea>
-        </div>
-        <button class="primary save">Save</button>
       </section>
 
       <section id="review" class="screen page">
