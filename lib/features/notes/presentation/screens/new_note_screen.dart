@@ -11,7 +11,9 @@ import '../../../../shared/presentation/widgets/primary_button.dart';
 import '../../data/local_note.dart';
 
 class NewNoteScreen extends StatefulWidget {
-  const NewNoteScreen({super.key});
+  const NewNoteScreen({super.key, this.noteId});
+
+  final String? noteId;
 
   @override
   State<NewNoteScreen> createState() => _NewNoteScreenState();
@@ -22,6 +24,61 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   final _lessonController = TextEditingController();
   final _matterController = TextEditingController();
   final _applyController = TextEditingController();
+
+  LocalNote? _editingNote;
+
+  bool get _isEditing => widget.noteId != null && widget.noteId!.isNotEmpty;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadExistingNote();
+  }
+
+  void _loadExistingNote() {
+    if (!_isEditing) return;
+
+    final notesBox = Hive.box<dynamic>(StorageKeys.notesBox);
+    final rawNote = notesBox.get(widget.noteId);
+    if (rawNote is! Map<dynamic, dynamic>) return;
+
+    final note = LocalNote.fromMap(rawNote);
+    _editingNote = note;
+    _titleController.text = note.title;
+    _fillBodyFields(note.body);
+  }
+
+  void _fillBodyFields(String body) {
+    final learnedMarker = 'What I learned:\n';
+    final mattersMarker = '\n\nWhy this matters:\n';
+    final applyMarker = '\n\nWhere I can apply this:\n';
+
+    if (!body.contains(learnedMarker) && !body.contains(mattersMarker) && !body.contains(applyMarker)) {
+      _lessonController.text = body;
+      return;
+    }
+
+    final learnedStart = body.indexOf(learnedMarker);
+    final mattersStart = body.indexOf(mattersMarker);
+    final applyStart = body.indexOf(applyMarker);
+
+    if (learnedStart != -1) {
+      final start = learnedStart + learnedMarker.length;
+      final end = mattersStart != -1 ? mattersStart : applyStart != -1 ? applyStart : body.length;
+      _lessonController.text = body.substring(start, end).trim();
+    }
+
+    if (mattersStart != -1) {
+      final start = mattersStart + mattersMarker.length;
+      final end = applyStart != -1 ? applyStart : body.length;
+      _matterController.text = body.substring(start, end).trim();
+    }
+
+    if (applyStart != -1) {
+      final start = applyStart + applyMarker.length;
+      _applyController.text = body.substring(start).trim();
+    }
+  }
 
   @override
   void dispose() {
@@ -53,10 +110,10 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
 
     final now = DateTime.now();
     final note = LocalNote(
-      id: const Uuid().v4(),
+      id: _editingNote?.id ?? const Uuid().v4(),
       title: title.isNotEmpty ? title : 'Untitled Note',
       body: bodyParts.join('\n\n'),
-      createdAt: now,
+      createdAt: _editingNote?.createdAt ?? now,
       updatedAt: now,
     );
 
@@ -69,8 +126,10 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isEditing = _editingNote != null;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('New Note')),
+      appBar: AppBar(title: Text(isEditing ? 'Edit Note' : 'New Note')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSpacing.lg),
@@ -82,7 +141,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                 children: [
                   const SizedBox(height: AppSpacing.lg),
                   Text(
-                    'Capture one real learning.',
+                    isEditing ? 'Refine this learning.' : 'Capture one real learning.',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const SizedBox(height: AppSpacing.lg),
